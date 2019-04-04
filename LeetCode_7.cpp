@@ -1,3 +1,4 @@
+//#1
 public: int reverse(int x) {
     if(x>2147483647 || x<-2147483648) 
        return 0;
@@ -18,3 +19,22 @@ public: int reverse(int x) {
     }
     return result;
 }
+
+//#2
+class Solution {
+public:
+    int reverse(int x) {
+        if(x==0) return 0;
+        while(x%10 == 0)
+            x/=10;
+        long res=0;
+        while(x!=0)
+        {
+            res=res*10+x%10;
+            x/=10;
+            if (res > INT_MAX || res < INT_MIN)
+                return 0;
+        }
+        return static_cast<int>(res);
+    }
+};
